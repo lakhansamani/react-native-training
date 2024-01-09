@@ -64,7 +64,7 @@ The last comment block of each slide will be treated as slide notes. It will be 
 # Setting up our first project
 
 ```sh
-npx create-expo-app MyApp
+npx create-expo-app -t expo-template-blank-typescript MyApp
 ```
 
 For using `react-native-cli`
