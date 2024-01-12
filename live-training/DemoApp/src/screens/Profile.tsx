@@ -1,6 +1,9 @@
-import { View, Text } from 'react-native';
+import { View, Text, Button } from 'react-native';
+import { ProfileProps, RouteProps } from '../constants/views';
 
-const Profile = () => {
+const Profile = (props: RouteProps) => {
+  const params: ProfileProps = props.route?.params as ProfileProps;
+
   return (
     <View>
       <Text
@@ -11,7 +14,13 @@ const Profile = () => {
           marginTop: 300,
         }}
       >
-        Profile
+        Profile {params.user_id}
+        <Button
+          title="Go Back"
+          onPress={() => {
+            props.navigation.pop();
+          }}
+        />
       </Text>
     </View>
   );

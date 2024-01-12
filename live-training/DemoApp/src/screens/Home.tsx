@@ -1,6 +1,7 @@
-import { View, Text } from 'react-native';
+import { View, Text, Button } from 'react-native';
+import { RouteProps } from '../constants/views';
 
-const Home = () => {
+const Home = (props: RouteProps) => {
   return (
     <View>
       <Text
@@ -13,6 +14,14 @@ const Home = () => {
       >
         Home
       </Text>
+      <Button
+        title="Go to Profile"
+        onPress={() => {
+          props.navigation.navigate('Profile', {
+            user_id: '1',
+          });
+        }}
+      />
     </View>
   );
 };

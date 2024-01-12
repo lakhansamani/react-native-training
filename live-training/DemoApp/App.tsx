@@ -1,40 +1,20 @@
-import { useState } from 'react';
+import { NavigationContainer } from '@react-navigation/native';
 import { StyleSheet, View } from 'react-native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Home from './src/screens/Home';
 import Profile from './src/screens/Profile';
-import Tab from './src/components/Tab';
-import { views } from './src/constants/views';
-import CustomInput from './src/components/CustomInput';
+import { HomeScreenRoutes } from './src/constants/views';
+
+const Stack = createNativeStackNavigator<HomeScreenRoutes>();
 
 export default function App() {
-  const [currentView, setCurrentView] = useState<string | undefined>();
-  const [email, setEmail] = useState('');
-
-  const validateEmail = (data: string): string => {
-    // regex validation and send error string
-    if (!data.trim()) {
-      return 'Email is required';
-    }
-    return '';
-  };
-
   return (
-    <View style={styles.container}>
-      <Tab
-        tabItems={views}
-        currentTabItem={currentView}
-        onChange={setCurrentView}
-      />
-      <CustomInput
-        label="Email Address"
-        placeholder="Enter email"
-        value={email}
-        onDataChange={setEmail}
-        onValidate={validateEmail}
-      />
-      {currentView === 'Home' && <Home />}
-      {currentView === 'Profile' && <Profile />}
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Home">
+        <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen name="Profile" component={Profile} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
