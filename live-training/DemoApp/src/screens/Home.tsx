@@ -1,5 +1,6 @@
 import { View, Text, Button } from 'react-native';
 import { RouteProps } from '../constants/views';
+import { useContext } from 'react';
 
 const Home = (props: RouteProps) => {
   return (
