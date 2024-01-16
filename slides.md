@@ -148,3 +148,120 @@ npm install react-native-screens react-native-safe-area-context #for react-nativ
 Ref: https://reactnavigation.org/
 
 ---
+
+# Exercise
+
+- Build invoice APP
+
+---
+
+# Exercise
+
+- Build custom component to conditionally render Horizontal / Vertical list
+
+---
+
+# Using Location
+
+```
+npx expo install expo-location
+```
+
+Ref: https://docs.expo.dev/versions/latest/sdk/location/
+
+---
+
+# Using env
+
+For expo build, use
+
+`EXPO_PUBLIC_` prefix
+
+---
+
+# Using env for local development
+
+- Create .env files to manage multiple env on local
+  ![env](assets/env.png)
+
+---
+
+# Adding to eas.json
+
+```json
+{
+  "build": {
+    "production": {
+      "env": {
+        "EXPO_PUBLIC_API_URL": "https://api.production.com"
+      }
+    },
+    "test": {
+      "env": {
+        "EXPO_PUBLIC_API_URL": "https://api.test.com"
+      }
+    }
+  }
+}
+```
+
+---
+
+# Using app.config.js
+
+For dynamic configurations and env based configs you can use app.config.js instead of
+app.json
+
+All you have to do is rename `app.json` -> `app.config.js` and use `module.exports` to export config
+
+example:
+
+```js
+module.exports = {
+  // use the variable if it's defined, otherwise use the fallback
+  icon: process.env.APP_ICON || './assets/icon.png',
+  name: process.env.APP_NAME || 'My App',
+};
+```
+
+---
+
+# Using secrets
+
+This is specific to eas builds(expo)
+
+```sh
+eas secret:create --scope project --name SECRET_NAME --value secretvalue --type string
+```
+
+---
+
+# Builds
+
+```
+eas build --platform android --local
+eas build --platform ios --local
+```
+
+---
+
+# Using eas.json
+
+```json
+{
+  "build": {
+    "development": {
+      "developmentClient": true,
+      "distribution": "internal",
+      "env": {
+        "EXPO_PUBLIC_AUTH_API": "https://horizontal-api-training-production.up.railway.app",
+        "EXPO_PUBLIC_GQL_API": "https://horizontail-training-api.up.railway.app/v1/graphql"
+      }
+    },
+    "preview": {
+      "distribution": "internal"
+    },
+    "production": {}
+  }
+}
+```

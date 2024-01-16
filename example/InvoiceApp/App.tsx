@@ -4,14 +4,17 @@ import { config } from '@gluestack-ui/config'; // Optional if you want to use de
 import { AuthProvider } from './src/context/auth';
 import { Tabs } from './src/routes/Tabs';
 import 'react-native-gesture-handler';
+import { LocationProvider } from './src/context/location';
 
 export default function App() {
   return (
     <NavigationContainer>
       <GluestackUIProvider config={config}>
-        <AuthProvider>
-          <Tabs />
-        </AuthProvider>
+        <LocationProvider>
+          <AuthProvider>
+            <Tabs />
+          </AuthProvider>
+        </LocationProvider>
       </GluestackUIProvider>
     </NavigationContainer>
   );
