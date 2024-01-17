@@ -1,6 +1,7 @@
 import { Spinner } from '@gluestack-ui/themed';
-import { createContext, useEffect, useState } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
 import * as SecureStore from 'expo-secure-store';
+import * as BuggyLib from '@lakhansamani/buggy-lib';
 
 interface AuthData {
   token: string;
@@ -40,6 +41,9 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       });
       setLoading(false);
     };
+    const arr = [1, 2, 3];
+    const sum = BuggyLib.sum(arr);
+    console.log('sum', sum);
     getAuthData();
 
     return () => {

@@ -157,7 +157,40 @@ Ref: https://reactnavigation.org/
 
 # Exercise
 
-- Build custom component to conditionally render Horizontal / Vertical list
+- Build custom component for rendering any given list
+
+  - List item type could be anything (Use generics for that)
+  - Conditionally render Horizontal / Vertical list
+  - Allow setting onPressItem method of each item on the list
+
+  ```jsx
+    exampleResponse = {
+      orientation: 'horizontal',
+      items: [{
+        id:1,
+        image:'',
+        title: ''
+      }, {
+        id:2,
+        image:'',
+        title:''
+      }],
+    }
+    <ImageItem id image title>
+    <CustomList
+      orientation=""
+      items={exampleResponse.items}
+      onPressItem={}
+      itemView={(item) => <ImageItem id={item.id} image={item.image} title/>}}
+    />
+
+    <>
+      <Presseable onPress={() => {
+        props.onPressItem(item)
+      }}>
+    </>
+
+  ```
 
 ---
 
@@ -265,3 +298,15 @@ eas build --platform ios --local
   }
 }
 ```
+
+---
+
+# Patches
+
+To fix the node_modules error temporarily till author fixes it
+
+- Fix broken file in node_modules
+- Run patch command
+  `npx patch-package some-package`
+- Add post install script
+  - `"postinstall": "patch-package"`
