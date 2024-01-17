@@ -210,6 +210,10 @@ For expo build, use
 
 `EXPO_PUBLIC_` prefix
 
+How to access variable?
+
+- `process.env.VARIABLE_NAME`
+
 ---
 
 # Using env for local development
@@ -272,6 +276,8 @@ eas secret:create --scope project --name SECRET_NAME --value secretvalue --type 
 # Builds
 
 ```
+eas login
+eas init
 eas build --platform android --local
 eas build --platform ios --local
 ```

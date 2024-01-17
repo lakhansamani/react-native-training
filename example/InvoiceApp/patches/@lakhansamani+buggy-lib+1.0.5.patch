@@ -1,0 +1,13 @@
+diff --git a/node_modules/@lakhansamani/buggy-lib/lib/index.js b/node_modules/@lakhansamani/buggy-lib/lib/index.js
+index 5b8c7aa..251749c 100644
+--- a/node_modules/@lakhansamani/buggy-lib/lib/index.js
++++ b/node_modules/@lakhansamani/buggy-lib/lib/index.js
+@@ -4,7 +4,7 @@ exports.sum = void 0;
+ function sum(arr) {
+     if (arr === void 0) { arr = []; }
+     var sum = arr.reduce(function (total, item) {
+-        return total - item;
++        return total + item;
+     });
+     return sum;
+ }
