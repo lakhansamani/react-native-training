@@ -316,3 +316,100 @@ To fix the node_modules error temporarily till author fixes it
   `npx patch-package some-package`
 - Add post install script
   - `"postinstall": "patch-package"`
+
+---
+
+# Eject expo to react-native-cli
+
+```sh
+npx expo prebuild
+```
+
+---
+
+# Adding testing framework
+
+## [Jest](https://jestjs.io/)
+
+- Unit testing framework which provides capabilities to test most of JS & JSX code
+
+## Setup
+
+```sh
+npm install --save-dev jest @types/jest
+npm install --save-dev @babel/preset-typescript
+npm install --save-dev @testing-library/react-native
+```
+
+## Set preset to `react-native` in jest config or `package.json`
+
+# Add test for component `App.test.tsx`
+
+```jsx
+import { render, screen } from '@testing-library/react-native';
+import App from './App';
+
+test('renders App correctly', () => {
+  render(<App />);
+  expect(
+    screen.getByText('Open up App.tsx to start working on your app!')
+  ).toBeTruthy();
+});
+```
+
+# Writing js function tests
+
+```js
+import { validateEmail } from './validation';
+
+test('validateEmail returns true for valid email', () => {
+  const validEmail = 'test@gmail.com';
+  expect(validateEmail(validEmail)).toBe(true);
+  const invalidEmail = 'test';
+  expect(validateEmail(invalidEmail)).toBe(false);
+});
+```
+
+---
+
+# End-to-end testing
+
+Detox [https://github.com/wix/detox/]
+Appium [https://appium.io/docs/en/2.4/]
+Maestro [https://maestro.mobile.dev/]
+
+---
+
+# Using detox
+
+## CLI setup
+
+```sh
+npm install detox-cli --global
+
+brew tap wix/brew
+brew install applesimutils
+```
+
+```sh
+npm install detox --save-dev
+detox init
+```
+
+- Replace App name in `.detoxrc.js`
+
+For more ref: https://wix.github.io/Detox/docs/next/introduction/project-setup
+
+---
+
+# Detox Tests
+
+- Check config in `e2e/` folder
+
+Running test https://wix.github.io/Detox/docs/next/introduction/preparing-for-ci
+
+---
+
+# Debugging
+
+https://fbflipper.com/docs/features/react-native/
