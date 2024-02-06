@@ -413,3 +413,50 @@ Running test https://wix.github.io/Detox/docs/next/introduction/preparing-for-ci
 # Debugging
 
 https://fbflipper.com/docs/features/react-native/
+
+- `npx react-native doctor`
+- Install AVD manager extension
+- `brew install android-platform-tools`
+- Start emmulator
+- Click on run view
+- Create config for react-native
+  - Debug ios
+  - Debug android
+  - Run ios
+  - Run android
+
+---
+
+# Native modules
+
+### Examples:
+
+- Android: https://reactnative.dev/docs/native-modules-android?android-language=java
+  - Write the native module in `android/kotlin+java/package-name/ModuleName.kt`
+  - Once the module is written register the module with React Native
+    - Create a file called `MyAppPackage.kt` and override createNativeModules to return list of packages along with your package
+  - In MainApplication.kt, modify `getPackages` and add your package there
+  - Import Native module in your react application
+- IOS: https://reactnative.dev/docs/native-modules-iosx
+
+---
+
+# Pub Sub
+
+- Using PubNub
+- We will be using `useEffect` and subscribe to a channel.
+- `npm install --save pubnub pubnub-react`
+
+---
+
+# Payment Lib
+
+- We will be using stripe for this
+- https://stripe.com/docs/payments/accept-a-payment
+- `npm install --save @stripe/stripe-react-native`
+
+---
+
+# Platform specific code
+
+- https://reactnative.dev/docs/platform-specific-code
